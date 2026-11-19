@@ -1,0 +1,2292 @@
+{
+  "name": "MONTECH MKey PRO 75 ANSI (USB)",
+  "vendorId": "0x362D",
+  "productId": "0x1700",
+  "keycodes": [
+    "qmk_lighting"
+  ],
+  "menus": [
+    {
+      "label": "Lighting",
+      "content": [
+        {
+          "label": "Backlight",
+          "content": [
+            {
+              "label": "Brightness",
+              "type": "range",
+              "options": [
+                0,
+                255
+              ],
+              "content": [
+                "id_qmk_rgb_matrix_brightness",
+                3,
+                1
+              ]
+            },
+            {
+              "label": "Effect",
+              "type": "dropdown",
+              "content": [
+                "id_qmk_rgb_matrix_effect",
+                3,
+                2
+              ],
+              "options": [
+                [
+                  "None",
+                  0
+                ],
+                [
+                  "Solid Color",
+                  1
+                ],
+                [
+                  "Breathing",
+                  2
+                ],
+                [
+                  "Band Spiral Val",
+                  3
+                ],
+                [
+                  "Cycle All",
+                  4
+                ],
+                [
+                  "Cycle Left Right",
+                  5
+                ],
+                [
+                  "Cycle Up Down",
+                  6
+                ],
+                [
+                  "Rainbow Moving Chevron",
+                  7
+                ],
+                [
+                  "Cycle Out In",
+                  8
+                ],
+                [
+                  "Cycle Out In Dual",
+                  9
+                ],
+                [
+                  "Cycle Pinwheel",
+                  10
+                ],
+                [
+                  "Cycle Spiral",
+                  11
+                ],
+                [
+                  "Dual Beacon",
+                  12
+                ],
+                [
+                  "Rainbow Beacon",
+                  13
+                ],
+                [
+                  "Jellybean Raindrops",
+                  14
+                ],
+                [
+                  "Pixel Rain",
+                  15
+                ],
+                [
+                  "Typing Heatmap",
+                  16
+                ],
+                [
+                  "Digital Rain",
+                  17
+                ],
+                [
+                  "Reactive Simple",
+                  18
+                ],
+                [
+                  "Reactive Multiwide",
+                  19
+                ],
+                [
+                  "Reactive Multinexus",
+                  20
+                ],
+                [
+                  "Splash",
+                  21
+                ],
+                [
+                  "Solid Splash",
+                  22
+                ]
+              ]
+            },
+            {
+              "showIf": "{id_qmk_rgb_matrix_effect} > 1",
+              "label": "Effect Speed",
+              "type": "range",
+              "options": [
+                0,
+                255
+              ],
+              "content": [
+                "id_qmk_rgb_matrix_effect_speed",
+                3,
+                3
+              ]
+            },
+            {
+              "showIf": "{id_qmk_rgb_matrix_effect} != 0 && ( {id_qmk_rgb_matrix_effect} < 4 || {id_qmk_rgb_matrix_effect} == 18 || ({id_qmk_rgb_matrix_effect} > 17 && {id_qmk_rgb_matrix_effect} != 21) ) ",
+              "label": "Color",
+              "type": "color",
+              "content": [
+                "id_qmk_rgb_matrix_color",
+                3,
+                4
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Paint",
+      "content": [
+        {
+          "label": "All Keys",
+          "content": [
+            {
+              "label": "Set All Colors",
+              "type": "color",
+              "content": [
+                "id_mk_fillc",
+                32,
+                240
+              ]
+            },
+            {
+              "label": "Set All Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_fillb",
+                33,
+                240
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Function Row",
+          "content": [
+            {
+              "label": "Esc",
+              "type": "color",
+              "content": [
+                "id_mk_c0",
+                32,
+                0
+              ]
+            },
+            {
+              "label": "Esc Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b0",
+                33,
+                0
+              ]
+            },
+            {
+              "label": "F1",
+              "type": "color",
+              "content": [
+                "id_mk_c1",
+                32,
+                1
+              ]
+            },
+            {
+              "label": "F1 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b1",
+                33,
+                1
+              ]
+            },
+            {
+              "label": "F2",
+              "type": "color",
+              "content": [
+                "id_mk_c2",
+                32,
+                2
+              ]
+            },
+            {
+              "label": "F2 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b2",
+                33,
+                2
+              ]
+            },
+            {
+              "label": "F3",
+              "type": "color",
+              "content": [
+                "id_mk_c3",
+                32,
+                3
+              ]
+            },
+            {
+              "label": "F3 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b3",
+                33,
+                3
+              ]
+            },
+            {
+              "label": "F4",
+              "type": "color",
+              "content": [
+                "id_mk_c4",
+                32,
+                4
+              ]
+            },
+            {
+              "label": "F4 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b4",
+                33,
+                4
+              ]
+            },
+            {
+              "label": "F5",
+              "type": "color",
+              "content": [
+                "id_mk_c5",
+                32,
+                5
+              ]
+            },
+            {
+              "label": "F5 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b5",
+                33,
+                5
+              ]
+            },
+            {
+              "label": "F6",
+              "type": "color",
+              "content": [
+                "id_mk_c6",
+                32,
+                6
+              ]
+            },
+            {
+              "label": "F6 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b6",
+                33,
+                6
+              ]
+            },
+            {
+              "label": "F7",
+              "type": "color",
+              "content": [
+                "id_mk_c7",
+                32,
+                7
+              ]
+            },
+            {
+              "label": "F7 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b7",
+                33,
+                7
+              ]
+            },
+            {
+              "label": "F8",
+              "type": "color",
+              "content": [
+                "id_mk_c8",
+                32,
+                8
+              ]
+            },
+            {
+              "label": "F8 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b8",
+                33,
+                8
+              ]
+            },
+            {
+              "label": "F9",
+              "type": "color",
+              "content": [
+                "id_mk_c9",
+                32,
+                9
+              ]
+            },
+            {
+              "label": "F9 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b9",
+                33,
+                9
+              ]
+            },
+            {
+              "label": "F10",
+              "type": "color",
+              "content": [
+                "id_mk_c10",
+                32,
+                10
+              ]
+            },
+            {
+              "label": "F10 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b10",
+                33,
+                10
+              ]
+            },
+            {
+              "label": "F11",
+              "type": "color",
+              "content": [
+                "id_mk_c11",
+                32,
+                11
+              ]
+            },
+            {
+              "label": "F11 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b11",
+                33,
+                11
+              ]
+            },
+            {
+              "label": "F12",
+              "type": "color",
+              "content": [
+                "id_mk_c12",
+                32,
+                12
+              ]
+            },
+            {
+              "label": "F12 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b12",
+                33,
+                12
+              ]
+            },
+            {
+              "label": "Del",
+              "type": "color",
+              "content": [
+                "id_mk_c13",
+                32,
+                13
+              ]
+            },
+            {
+              "label": "Del Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b13",
+                33,
+                13
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Number Row",
+          "content": [
+            {
+              "label": "Grave",
+              "type": "color",
+              "content": [
+                "id_mk_c14",
+                32,
+                14
+              ]
+            },
+            {
+              "label": "Grave Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b14",
+                33,
+                14
+              ]
+            },
+            {
+              "label": "1",
+              "type": "color",
+              "content": [
+                "id_mk_c15",
+                32,
+                15
+              ]
+            },
+            {
+              "label": "1 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b15",
+                33,
+                15
+              ]
+            },
+            {
+              "label": "2",
+              "type": "color",
+              "content": [
+                "id_mk_c16",
+                32,
+                16
+              ]
+            },
+            {
+              "label": "2 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b16",
+                33,
+                16
+              ]
+            },
+            {
+              "label": "3",
+              "type": "color",
+              "content": [
+                "id_mk_c17",
+                32,
+                17
+              ]
+            },
+            {
+              "label": "3 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b17",
+                33,
+                17
+              ]
+            },
+            {
+              "label": "4",
+              "type": "color",
+              "content": [
+                "id_mk_c18",
+                32,
+                18
+              ]
+            },
+            {
+              "label": "4 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b18",
+                33,
+                18
+              ]
+            },
+            {
+              "label": "5",
+              "type": "color",
+              "content": [
+                "id_mk_c19",
+                32,
+                19
+              ]
+            },
+            {
+              "label": "5 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b19",
+                33,
+                19
+              ]
+            },
+            {
+              "label": "6",
+              "type": "color",
+              "content": [
+                "id_mk_c20",
+                32,
+                20
+              ]
+            },
+            {
+              "label": "6 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b20",
+                33,
+                20
+              ]
+            },
+            {
+              "label": "7",
+              "type": "color",
+              "content": [
+                "id_mk_c21",
+                32,
+                21
+              ]
+            },
+            {
+              "label": "7 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b21",
+                33,
+                21
+              ]
+            },
+            {
+              "label": "8",
+              "type": "color",
+              "content": [
+                "id_mk_c22",
+                32,
+                22
+              ]
+            },
+            {
+              "label": "8 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b22",
+                33,
+                22
+              ]
+            },
+            {
+              "label": "9",
+              "type": "color",
+              "content": [
+                "id_mk_c23",
+                32,
+                23
+              ]
+            },
+            {
+              "label": "9 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b23",
+                33,
+                23
+              ]
+            },
+            {
+              "label": "0",
+              "type": "color",
+              "content": [
+                "id_mk_c24",
+                32,
+                24
+              ]
+            },
+            {
+              "label": "0 Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b24",
+                33,
+                24
+              ]
+            },
+            {
+              "label": "Minus",
+              "type": "color",
+              "content": [
+                "id_mk_c25",
+                32,
+                25
+              ]
+            },
+            {
+              "label": "Minus Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b25",
+                33,
+                25
+              ]
+            },
+            {
+              "label": "Equal",
+              "type": "color",
+              "content": [
+                "id_mk_c26",
+                32,
+                26
+              ]
+            },
+            {
+              "label": "Equal Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b26",
+                33,
+                26
+              ]
+            },
+            {
+              "label": "Backspace",
+              "type": "color",
+              "content": [
+                "id_mk_c27",
+                32,
+                27
+              ]
+            },
+            {
+              "label": "Backspace Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b27",
+                33,
+                27
+              ]
+            },
+            {
+              "label": "Home",
+              "type": "color",
+              "content": [
+                "id_mk_c28",
+                32,
+                28
+              ]
+            },
+            {
+              "label": "Home Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b28",
+                33,
+                28
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Top Row",
+          "content": [
+            {
+              "label": "Tab",
+              "type": "color",
+              "content": [
+                "id_mk_c29",
+                32,
+                29
+              ]
+            },
+            {
+              "label": "Tab Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b29",
+                33,
+                29
+              ]
+            },
+            {
+              "label": "Q",
+              "type": "color",
+              "content": [
+                "id_mk_c30",
+                32,
+                30
+              ]
+            },
+            {
+              "label": "Q Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b30",
+                33,
+                30
+              ]
+            },
+            {
+              "label": "W",
+              "type": "color",
+              "content": [
+                "id_mk_c31",
+                32,
+                31
+              ]
+            },
+            {
+              "label": "W Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b31",
+                33,
+                31
+              ]
+            },
+            {
+              "label": "E",
+              "type": "color",
+              "content": [
+                "id_mk_c32",
+                32,
+                32
+              ]
+            },
+            {
+              "label": "E Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b32",
+                33,
+                32
+              ]
+            },
+            {
+              "label": "R",
+              "type": "color",
+              "content": [
+                "id_mk_c33",
+                32,
+                33
+              ]
+            },
+            {
+              "label": "R Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b33",
+                33,
+                33
+              ]
+            },
+            {
+              "label": "T",
+              "type": "color",
+              "content": [
+                "id_mk_c34",
+                32,
+                34
+              ]
+            },
+            {
+              "label": "T Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b34",
+                33,
+                34
+              ]
+            },
+            {
+              "label": "Y",
+              "type": "color",
+              "content": [
+                "id_mk_c35",
+                32,
+                35
+              ]
+            },
+            {
+              "label": "Y Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b35",
+                33,
+                35
+              ]
+            },
+            {
+              "label": "U",
+              "type": "color",
+              "content": [
+                "id_mk_c36",
+                32,
+                36
+              ]
+            },
+            {
+              "label": "U Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b36",
+                33,
+                36
+              ]
+            },
+            {
+              "label": "I",
+              "type": "color",
+              "content": [
+                "id_mk_c37",
+                32,
+                37
+              ]
+            },
+            {
+              "label": "I Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b37",
+                33,
+                37
+              ]
+            },
+            {
+              "label": "O",
+              "type": "color",
+              "content": [
+                "id_mk_c38",
+                32,
+                38
+              ]
+            },
+            {
+              "label": "O Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b38",
+                33,
+                38
+              ]
+            },
+            {
+              "label": "P",
+              "type": "color",
+              "content": [
+                "id_mk_c39",
+                32,
+                39
+              ]
+            },
+            {
+              "label": "P Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b39",
+                33,
+                39
+              ]
+            },
+            {
+              "label": "LBr",
+              "type": "color",
+              "content": [
+                "id_mk_c40",
+                32,
+                40
+              ]
+            },
+            {
+              "label": "LBr Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b40",
+                33,
+                40
+              ]
+            },
+            {
+              "label": "RBr",
+              "type": "color",
+              "content": [
+                "id_mk_c41",
+                32,
+                41
+              ]
+            },
+            {
+              "label": "RBr Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b41",
+                33,
+                41
+              ]
+            },
+            {
+              "label": "Backslash",
+              "type": "color",
+              "content": [
+                "id_mk_c42",
+                32,
+                42
+              ]
+            },
+            {
+              "label": "Backslash Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b42",
+                33,
+                42
+              ]
+            },
+            {
+              "label": "PgUp",
+              "type": "color",
+              "content": [
+                "id_mk_c43",
+                32,
+                43
+              ]
+            },
+            {
+              "label": "PgUp Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b43",
+                33,
+                43
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Home Row",
+          "content": [
+            {
+              "label": "Caps",
+              "type": "color",
+              "content": [
+                "id_mk_c44",
+                32,
+                44
+              ]
+            },
+            {
+              "label": "Caps Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b44",
+                33,
+                44
+              ]
+            },
+            {
+              "label": "A",
+              "type": "color",
+              "content": [
+                "id_mk_c45",
+                32,
+                45
+              ]
+            },
+            {
+              "label": "A Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b45",
+                33,
+                45
+              ]
+            },
+            {
+              "label": "S",
+              "type": "color",
+              "content": [
+                "id_mk_c46",
+                32,
+                46
+              ]
+            },
+            {
+              "label": "S Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b46",
+                33,
+                46
+              ]
+            },
+            {
+              "label": "D",
+              "type": "color",
+              "content": [
+                "id_mk_c47",
+                32,
+                47
+              ]
+            },
+            {
+              "label": "D Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b47",
+                33,
+                47
+              ]
+            },
+            {
+              "label": "F",
+              "type": "color",
+              "content": [
+                "id_mk_c48",
+                32,
+                48
+              ]
+            },
+            {
+              "label": "F Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b48",
+                33,
+                48
+              ]
+            },
+            {
+              "label": "G",
+              "type": "color",
+              "content": [
+                "id_mk_c49",
+                32,
+                49
+              ]
+            },
+            {
+              "label": "G Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b49",
+                33,
+                49
+              ]
+            },
+            {
+              "label": "H",
+              "type": "color",
+              "content": [
+                "id_mk_c50",
+                32,
+                50
+              ]
+            },
+            {
+              "label": "H Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b50",
+                33,
+                50
+              ]
+            },
+            {
+              "label": "J",
+              "type": "color",
+              "content": [
+                "id_mk_c51",
+                32,
+                51
+              ]
+            },
+            {
+              "label": "J Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b51",
+                33,
+                51
+              ]
+            },
+            {
+              "label": "K",
+              "type": "color",
+              "content": [
+                "id_mk_c52",
+                32,
+                52
+              ]
+            },
+            {
+              "label": "K Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b52",
+                33,
+                52
+              ]
+            },
+            {
+              "label": "L",
+              "type": "color",
+              "content": [
+                "id_mk_c53",
+                32,
+                53
+              ]
+            },
+            {
+              "label": "L Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b53",
+                33,
+                53
+              ]
+            },
+            {
+              "label": "SColon",
+              "type": "color",
+              "content": [
+                "id_mk_c54",
+                32,
+                54
+              ]
+            },
+            {
+              "label": "SColon Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b54",
+                33,
+                54
+              ]
+            },
+            {
+              "label": "Quote",
+              "type": "color",
+              "content": [
+                "id_mk_c55",
+                32,
+                55
+              ]
+            },
+            {
+              "label": "Quote Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b55",
+                33,
+                55
+              ]
+            },
+            {
+              "label": "Enter",
+              "type": "color",
+              "content": [
+                "id_mk_c56",
+                32,
+                56
+              ]
+            },
+            {
+              "label": "Enter Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b56",
+                33,
+                56
+              ]
+            },
+            {
+              "label": "PgDn",
+              "type": "color",
+              "content": [
+                "id_mk_c57",
+                32,
+                57
+              ]
+            },
+            {
+              "label": "PgDn Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b57",
+                33,
+                57
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Bottom Row",
+          "content": [
+            {
+              "label": "LShift",
+              "type": "color",
+              "content": [
+                "id_mk_c58",
+                32,
+                58
+              ]
+            },
+            {
+              "label": "LShift Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b58",
+                33,
+                58
+              ]
+            },
+            {
+              "label": "Z",
+              "type": "color",
+              "content": [
+                "id_mk_c59",
+                32,
+                59
+              ]
+            },
+            {
+              "label": "Z Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b59",
+                33,
+                59
+              ]
+            },
+            {
+              "label": "X",
+              "type": "color",
+              "content": [
+                "id_mk_c60",
+                32,
+                60
+              ]
+            },
+            {
+              "label": "X Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b60",
+                33,
+                60
+              ]
+            },
+            {
+              "label": "C",
+              "type": "color",
+              "content": [
+                "id_mk_c61",
+                32,
+                61
+              ]
+            },
+            {
+              "label": "C Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b61",
+                33,
+                61
+              ]
+            },
+            {
+              "label": "V",
+              "type": "color",
+              "content": [
+                "id_mk_c62",
+                32,
+                62
+              ]
+            },
+            {
+              "label": "V Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b62",
+                33,
+                62
+              ]
+            },
+            {
+              "label": "B",
+              "type": "color",
+              "content": [
+                "id_mk_c63",
+                32,
+                63
+              ]
+            },
+            {
+              "label": "B Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b63",
+                33,
+                63
+              ]
+            },
+            {
+              "label": "N",
+              "type": "color",
+              "content": [
+                "id_mk_c64",
+                32,
+                64
+              ]
+            },
+            {
+              "label": "N Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b64",
+                33,
+                64
+              ]
+            },
+            {
+              "label": "M",
+              "type": "color",
+              "content": [
+                "id_mk_c65",
+                32,
+                65
+              ]
+            },
+            {
+              "label": "M Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b65",
+                33,
+                65
+              ]
+            },
+            {
+              "label": "Comma",
+              "type": "color",
+              "content": [
+                "id_mk_c66",
+                32,
+                66
+              ]
+            },
+            {
+              "label": "Comma Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b66",
+                33,
+                66
+              ]
+            },
+            {
+              "label": "Dot",
+              "type": "color",
+              "content": [
+                "id_mk_c67",
+                32,
+                67
+              ]
+            },
+            {
+              "label": "Dot Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b67",
+                33,
+                67
+              ]
+            },
+            {
+              "label": "Slash",
+              "type": "color",
+              "content": [
+                "id_mk_c68",
+                32,
+                68
+              ]
+            },
+            {
+              "label": "Slash Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b68",
+                33,
+                68
+              ]
+            },
+            {
+              "label": "RShift",
+              "type": "color",
+              "content": [
+                "id_mk_c69",
+                32,
+                69
+              ]
+            },
+            {
+              "label": "RShift Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b69",
+                33,
+                69
+              ]
+            },
+            {
+              "label": "Up",
+              "type": "color",
+              "content": [
+                "id_mk_c70",
+                32,
+                70
+              ]
+            },
+            {
+              "label": "Up Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b70",
+                33,
+                70
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Modifier Row",
+          "content": [
+            {
+              "label": "LCtrl",
+              "type": "color",
+              "content": [
+                "id_mk_c71",
+                32,
+                71
+              ]
+            },
+            {
+              "label": "LCtrl Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b71",
+                33,
+                71
+              ]
+            },
+            {
+              "label": "LWin",
+              "type": "color",
+              "content": [
+                "id_mk_c72",
+                32,
+                72
+              ]
+            },
+            {
+              "label": "LWin Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b72",
+                33,
+                72
+              ]
+            },
+            {
+              "label": "LAlt",
+              "type": "color",
+              "content": [
+                "id_mk_c73",
+                32,
+                73
+              ]
+            },
+            {
+              "label": "LAlt Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b73",
+                33,
+                73
+              ]
+            },
+            {
+              "label": "Space",
+              "type": "color",
+              "content": [
+                "id_mk_c74",
+                32,
+                74
+              ]
+            },
+            {
+              "label": "Space Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b74",
+                33,
+                74
+              ]
+            },
+            {
+              "label": "RAlt",
+              "type": "color",
+              "content": [
+                "id_mk_c75",
+                32,
+                75
+              ]
+            },
+            {
+              "label": "RAlt Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b75",
+                33,
+                75
+              ]
+            },
+            {
+              "label": "Fn",
+              "type": "color",
+              "content": [
+                "id_mk_c76",
+                32,
+                76
+              ]
+            },
+            {
+              "label": "Fn Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b76",
+                33,
+                76
+              ]
+            },
+            {
+              "label": "RCtrl",
+              "type": "color",
+              "content": [
+                "id_mk_c77",
+                32,
+                77
+              ]
+            },
+            {
+              "label": "RCtrl Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b77",
+                33,
+                77
+              ]
+            },
+            {
+              "label": "Left",
+              "type": "color",
+              "content": [
+                "id_mk_c78",
+                32,
+                78
+              ]
+            },
+            {
+              "label": "Left Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b78",
+                33,
+                78
+              ]
+            },
+            {
+              "label": "Down",
+              "type": "color",
+              "content": [
+                "id_mk_c79",
+                32,
+                79
+              ]
+            },
+            {
+              "label": "Down Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b79",
+                33,
+                79
+              ]
+            },
+            {
+              "label": "Right",
+              "type": "color",
+              "content": [
+                "id_mk_c80",
+                32,
+                80
+              ]
+            },
+            {
+              "label": "Right Brightness",
+              "type": "range",
+              "options": [
+                0,
+                15
+              ],
+              "content": [
+                "id_mk_b80",
+                33,
+                80
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "customKeycodes": [
+    {
+      "name": "Task View",
+      "title": "Task View in Windows",
+      "shortName": "Task"
+    },
+    {
+      "name": "File Explorer",
+      "title": "File Explorer in Windows",
+      "shortName": "File"
+    },
+    {
+      "name": "Lock Screen",
+      "title": "Lock Screen in Windows",
+      "shortName": "Lock"
+    },
+    {
+      "name": "Misson Control",
+      "title": "Misson Control in Mac",
+      "shortName": "MCtl"
+    },
+    {
+      "name": "Launch Pad",
+      "title": "Lanuch Pad in Windows",
+      "shortName": "LPad"
+    },
+    {
+      "name": "Left Option",
+      "title": "Left Option",
+      "shortName": "LOpt"
+    },
+    {
+      "name": "Right Option",
+      "title": "Right Option",
+      "shortName": "ROpt"
+    },
+    {
+      "name": "Left Cmd",
+      "title": "Left Command",
+      "shortName": "LCmd"
+    },
+    {
+      "name": "Right Cmd",
+      "title": "Right Command",
+      "shortName": "RCmd"
+    },
+    {
+      "name": "Bluetooth Host 1",
+      "title": "Bluetooth Host 1",
+      "shortName": "BTH1"
+    },
+    {
+      "name": "Bluetooth Host 2",
+      "title": "Bluetooth Host 2",
+      "shortName": "BTH2"
+    },
+    {
+      "name": "Bluetooth Host 3",
+      "title": "Bluetooth Host 3",
+      "shortName": "BTH3"
+    },
+    {
+      "name": "2.4G",
+      "title": "2.4G",
+      "shortName": "2.4G"
+    },
+    {
+      "name": "Battery Level",
+      "title": "Show battery level",
+      "shortName": "Batt"
+    },
+    {
+      "name": "Encoder Mode",
+      "title": "Cycle volume, zoom and lighting effect",
+      "shortName": "Knob"
+    },
+    {
+      "name": "Encoder Ring",
+      "title": "Toggle encoder ring lighting",
+      "shortName": "Ring"
+    }
+  ],
+  "matrix": {
+    "rows": 6,
+    "cols": 15
+  },
+  "layouts": {
+    "keymap": [
+      [
+        {
+          "c": "#777777"
+        },
+        "0, 0",
+        {
+          "x": 0.25,
+          "c": "#cccccc"
+        },
+        "0, 1",
+        "0, 2",
+        "0, 3",
+        "0, 4",
+        {
+          "x": 0.25,
+          "c": "#aaaaaa"
+        },
+        "0, 5",
+        "0, 6",
+        "0, 7",
+        "0, 8",
+        {
+          "x": 0.25,
+          "c": "#cccccc"
+        },
+        "0, 9",
+        "0, 10",
+        "0, 11",
+        "0, 12",
+        {
+          "x": 0.25,
+          "c": "#aaaaaa"
+        },
+        "0, 13",
+        {
+          "x": 0.25
+        },
+        "0, 14"
+      ],
+      [
+        {
+          "y": 0.25,
+          "c": "#aaaaaa"
+        },
+        "1, 0",
+        {
+          "c": "#cccccc"
+        },
+        "1, 1",
+        "1, 2",
+        "1, 3",
+        "1, 4",
+        "1, 5",
+        "1, 6",
+        "1, 7",
+        "1, 8",
+        "1, 9",
+        "1, 10",
+        "1, 11",
+        "1, 12",
+        {
+          "w": 2,
+          "c": "#aaaaaa"
+        },
+        "1, 13",
+        {
+          "x": 0.25
+        },
+        "1, 14"
+      ],
+      [
+        {
+          "w": 1.5,
+          "c": "#aaaaaa"
+        },
+        "2, 0",
+        {
+          "c": "#cccccc"
+        },
+        "2, 1",
+        "2, 2",
+        "2, 3",
+        "2, 4",
+        "2, 5",
+        "2, 6",
+        "2, 7",
+        "2, 8",
+        "2, 9",
+        "2, 10",
+        "2, 11",
+        "2, 12",
+        {
+          "w": 1.5,
+          "c": "#aaaaaa"
+        },
+        "2, 13",
+        {
+          "x": 0.25
+        },
+        "2, 14"
+      ],
+      [
+        {
+          "w": 1.75,
+          "c": "#aaaaaa"
+        },
+        "3, 0",
+        {
+          "c": "#cccccc"
+        },
+        "3, 1",
+        "3, 2",
+        "3, 3",
+        "3, 4",
+        "3, 5",
+        "3, 6",
+        "3, 7",
+        "3, 8",
+        "3, 9",
+        "3, 10",
+        "3, 11",
+        {
+          "w": 2.25,
+          "c": "#777777"
+        },
+        "3, 13",
+        {
+          "x": 0.25,
+          "c": "#aaaaaa"
+        },
+        "3, 14"
+      ],
+      [
+        {
+          "w": 2.25,
+          "c": "#aaaaaa"
+        },
+        "4, 0",
+        {
+          "c": "#cccccc"
+        },
+        "4, 2",
+        "4, 3",
+        "4, 4",
+        "4, 5",
+        "4, 6",
+        "4, 7",
+        "4, 8",
+        "4, 9",
+        "4, 10",
+        "4, 11",
+        {
+          "w": 1.75,
+          "c": "#aaaaaa"
+        },
+        "4, 12",
+        {
+          "x": 0.25,
+          "y": 0.25,
+          "c": "#cccccc"
+        },
+        "4, 13"
+      ],
+      [
+        {
+          "y": -0.25,
+          "w": 1.25,
+          "c": "#aaaaaa"
+        },
+        "5, 0",
+        {
+          "w": 1.25
+        },
+        "5, 1",
+        {
+          "w": 1.25
+        },
+        "5, 2",
+        {
+          "w": 6.25,
+          "c": "#cccccc"
+        },
+        "5, 6",
+        {
+          "c": "#aaaaaa"
+        },
+        "5, 9",
+        "5, 10",
+        "5, 11",
+        {
+          "x": 0.25,
+          "y": 0.25,
+          "c": "#cccccc"
+        },
+        "5, 12",
+        "5, 13",
+        "5, 14"
+      ]
+    ]
+  }
+}

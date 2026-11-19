@@ -1,0 +1,7 @@
+qmk_firmware/
+firmware/
+.build/
+__pycache__/
+*.py[cod]
+*.log
+tools/batmap_result.json
