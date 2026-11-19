@@ -22,8 +22,8 @@ Buildable firmware for the **ANSI MONTECH MKey PRO 75**, based on Keychron's QMK
 ### Flash the release
 
 1. Back up your VIA layout. Download the current **ANSI** `.bin` from Releases.
-2. Open the binary in [QMK Toolbox](https://qmk.fm/toolbox) and set the keyboard's connection switch to **USB**.
-3. Unplug the cable. Hold **Esc** while reconnecting it to enter WB32 DFU. Release Esc, then flash and wait for completion. Reconnect normally.
+2. Open the binary in [QMK Toolbox](https://qmk.fm/toolbox) and set the keyboard's connection switch to **USB**. Follow MONTECH's Toolbox procedure by selecting **ATmega32U4** in the MCU dropdown and enabling **Auto-Flash**.
+3. Unplug the cable. Hold **Esc** while reconnecting it to enter WB32 DFU. Release Esc and wait for **Flash complete**. Reconnect normally.
 4. If VIA retains old layers and the Mac layout is missing, export any custom layout, then use **Fn+Del in Win mode** to reset EEPROM to this build's defaults. This clears user settings.
 
 The matching factory **QMK BIN_ANSI** and the official flashing instructions are on the [MONTECH download page](https://www.montechpc.com/mkey-pro). This community binary is for ANSI hardware.
@@ -43,7 +43,7 @@ powershell -ExecutionPolicy Bypass -File scripts/setup.ps1
 powershell -ExecutionPolicy Bypass -File scripts/build.ps1
 ```
 
-The scripts fetch the pinned Keychron QMK revision and its dependencies, sync the port and overlays and write the compiled binary to `firmware/montech_mkey_pro_75_via.bin`. QMK embeds the build date, so a local rebuild can differ in bytes. The release also provides the complete source tree used by the build.
+The scripts fetch the pinned Keychron QMK revision and its dependencies, sync the port and overlays and write the compiled binary to `firmware/montech_mkey_pro_75_via.bin`. QMK embeds the build date, so a local rebuild can differ in bytes. The release also provides the complete source tree used by the build. From that archive, run only the build script after extraction.
 
 ### Optional utilities
 
