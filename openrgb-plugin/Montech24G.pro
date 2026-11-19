@@ -1,0 +1,10 @@
+TEMPLATE = lib
+CONFIG += plugin release c++17
+QT += core gui widgets
+TARGET = OpenRGBMontech24G
+DESTDIR = .
+INCLUDEPATH += . upstream upstream/RGBController upstream/i2c_smbus upstream/hidapi
+HEADERS += Montech24GPlugin.h
+SOURCES += Montech24GPlugin.cpp upstream/RGBController/RGBController.cpp
+LIBS += -L$$PWD/upstream/hidapi -lhidapi
+QMAKE_CXXFLAGS += /utf-8

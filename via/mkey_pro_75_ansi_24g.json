@@ -1,5 +1,5 @@
 {
-  "name": "MONTECH MKey PRO 75 ANSI (2.4 GHz, experimental)",
+  "name": "MONTECH MKey PRO 75 ANSI (2.4 GHz)",
   "vendorId": "0x362D",
   "productId": "0xD101",
   "keycodes": [

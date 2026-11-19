@@ -7,8 +7,10 @@ Tested with the keyboard working through its receiver and the keyboard's USB cab
 | Keyboard over USB | `362D:1700` | QMK Raw HID `FF60:0061` |
 | Wireless Link receiver | `362D:D101` | Raw HID `FF60:0061`, bridge `008C:0001` |
 
-The receiver's Raw HID collection accepted report writes but returned no replies to VIA protocol version, uptime, Vial ID, VialRGB info or LED count. The bridge collection has 32-byte payloads and Windows reports output ID `B2` and input IDs `B1` and `54`. With output report ID `B2`, delivery to the USB interface succeeded but version, state and VIA queries returned no input reply. Attempts to read its declared feature reports also returned errors.
+The LKBT51 bridge is supported from v1.1.0. The receiver sends Raw HID reports to the keyboard MCU using event `0x92`, and the keyboard returns replies in LKBT51 command `0x93`. VIA and VialRGB both use this route. The firmware keeps USB replies on USB when the originating request came in over USB.
 
-The [Keychron bridge investigation](https://github.com/Tymon3310/keychron-vial/blob/main/docs/launcher/bridge-dongle-protocol.md) describes a different bridge flow with unnumbered reports. On the pinned upstream revision for this port, the LKBT51 dispatch forwards host LED status and radio/DFU events. It contains no existing VIA/VialRGB round-trip over the radio. The available evidence does not establish whether this receiver can support one with a different bridge protocol.
+Before these two paths were added, a receiver connected through 2.4 GHz typed normally but did not return VIA or VialRGB replies. After the change the real receiver returned VIA protocol 12, VialRGB protocol 1, the effects list, and 90 LED entries. The final two LED entries drive the battery gauge.
 
-The experimental JSON records the receiver VID/PID and the same physical layout. VIA and OpenRGB require a working request/reply transport before they can configure the keyboard over 2.4 GHz. Use USB for configuration and testing lighting until that transport is available.
+The standard Vial identity request `FE 00` still produces no response through the receiver. The OpenRGB plugin queries VialRGB directly and registers separate key and encoder-ring zones. The stock OpenRGB VialRGB detector expects the identity response, so the plugin is needed over 2.4 GHz.
+
+Use the USB definition for `362D:1700` and the receiver definition for `362D:D101`. Bootloader and factory-test commands are not routed through the receiver.

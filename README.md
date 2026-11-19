@@ -7,17 +7,17 @@ Buildable firmware for the **ANSI MONTECH MKey PRO 75**, based on Keychron's QMK
 | Feature | USB | 2.4 GHz | Bluetooth |
 |---|---|---|---|
 | Keyboard, encoder, onboard lighting and OS switch | Yes | Yes | Yes |
-| VIA remapping and lighting controls | Yes | Experimental definition only | — |
-| OpenRGB live control | Yes | Receiver transport unverified | — |
+| VIA remapping and lighting controls | Yes | Yes | — |
+| OpenRGB live control | Yes, plugin | Yes, plugin | — |
 
 ### What's included
 
 - The MONTECH matrix column order, 12-phase SNLED27351 configuration and factory LED wiring for the keys and encoder ring. See [hardware notes](docs/hardware-proof.md).
 - Working USB / Bluetooth / 2.4 GHz selector and Win/Mac switch, with independent base and Fn layers. In Mac mode, the top row controls media and lighting, and Fn restores the function keys. The encoder's zoom uses Ctrl on Windows and Command on Mac.
-- Three encoder modes (volume, zoom, lighting effect), ring feedback and EEPROM storage for the selected mode and ring on/off setting. Fn + rotation controls brightness.
+- Three encoder modes (volume, zoom, lighting effect), ring feedback and EEPROM storage for the selected mode and ring on/off setting. Fn + rotation controls brightness. Pressing the encoder to switch modes flashes the ring for two seconds, including when the main lighting is off.
 - 81 key LEDs and 7 ring LEDs, plus six physical battery segments driven by two RGB entries. The segments fill from the bottom. During charging the filled segments stay on and the remaining ones blink. Fn+Esc turns off the main lighting and side gauge together. Fn+B briefly shows charge on the number row.
 - Battery-backed wireless operation with a 60-second backlight idle timeout, a 128/255 PWM cap and automatic WB32 STOP sleep. A key press is the wake source. Disconnecting from a host can turn lighting off sooner.
-- VialRGB Direct mode and effect selection over USB, packet acknowledgements for streaming, independent ring coordinates and per-key VIA colour controls. Live per-key colours are volatile. Optional Python tools provide screen-reactive lighting, HID diagnostics and battery segment mapping.
+- VialRGB Direct mode over USB and 2.4 GHz, plus effect selection over USB, packet acknowledgements for streaming, independent ring coordinates and per-key VIA colour controls. Live per-key colours are volatile. Optional Python tools provide screen-reactive lighting, HID diagnostics and battery segment mapping.
 
 ### Flash the release
 
@@ -31,8 +31,8 @@ The matching factory **QMK BIN_ANSI** and the official flashing instructions are
 ### VIA and OpenRGB
 
 - **VIA via USB.** In [VIA](https://usevia.app), turn on the Design tab in Settings. Load [the USB V3 definition](via/mkey_pro_75_ansi_usb.json) as a draft, then authorize the keyboard on Configure. Layers 0/1 are Windows and its Fn layer, 2/3 are Mac and its Fn layer.
-- **OpenRGB via USB.** In a build with the **QMK VialRGB Devices** detector, add VID `362D`, PID `1700`, then rescan or reconnect the keyboard. Select **Direct** to stream colours, or choose a supported onboard effect. The encoder ring appears as a separate column in the LED map. [OpenRGB source](https://gitlab.com/CalcProgrammer1/OpenRGB)
-- **2.4 GHz.** [The experimental VIA definition](via/mkey_pro_75_ansi_24g_experimental.json) identifies the receiver as `362D:D101`. The tested receiver exposed HID interfaces but did not answer VIA or VialRGB queries. The definition describes the layout. Working 2.4 GHz configuration and OpenRGB require a verified command path through the receiver. See [receiver test results](docs/receiver.md).
+- **VIA via 2.4 GHz.** Load [the receiver definition](via/mkey_pro_75_ansi_24g.json) as a draft. Disconnect the keyboard cable, select 2.4G and authorize the receiver. The two definitions use keyboard PID `1700` and receiver PID `D101`.
+- **OpenRGB.** Install `OpenRGBMontech24G.dll` from the release into a compatible Windows x64 OpenRGB installation. It gives both USB and 2.4 GHz the same keyboard and encoder-ring zones. See [plugin setup](openrgb-plugin/README.md). [Receiver protocol notes](docs/receiver.md).
 
 ### Build from source
 

@@ -5,3 +5,4 @@ __pycache__/
 *.py[cod]
 *.log
 tools/batmap_result.json
+openrgb-plugin/upstream/hidapi/*.lib

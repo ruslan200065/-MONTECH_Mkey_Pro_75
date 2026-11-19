@@ -40,6 +40,8 @@ enum {
 static bool     knob_light_enabled = true;
 static uint8_t  knob_mode    = KNOB_VOL;
 static uint32_t knob_ind_tmr = 0;
+static bool knob_preview_only = false;
+#define KNOB_PREVIEW_MS 2000
 static uint32_t bat_disp_tmr = 0;
 
 /* Version tag avoids interpreting erased or older EEPROM as settings. */
@@ -106,15 +108,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
+void housekeeping_task_user(void) {
+    if (knob_preview_only && timer_elapsed32(knob_ind_tmr) >= KNOB_PREVIEW_MS) {
+        knob_preview_only = false;
+        rgb_matrix_disable_noeeprom();
+    }
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KNB_MODE:
             if (record->event.pressed) {
                 knob_mode    = (knob_mode + 1) % KNOB_MODE_COUNT;
                 knob_ind_tmr = timer_read32();
+                if (!rgb_matrix_is_enabled()) {
+                    HSV saved_hsv = rgb_matrix_get_hsv();
+                    knob_preview_only = true;
+                    rgb_matrix_disable_time_reset();
+                    rgb_matrix_enable_noeeprom();
+                    rgb_matrix_sethsv_noeeprom(saved_hsv.h, saved_hsv.s, saved_hsv.v);
+                }
                 save_knob_settings();
             }
             return false;
+
+        case RGB_TOG:
+            if (record->event.pressed && knob_preview_only) {
+                knob_preview_only = false;
+                rgb_matrix_disable_noeeprom();
+            }
+            break;
 
         case KNB_LIGHT:
             if (record->event.pressed) {
@@ -189,18 +212,27 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     /* 3. Кольцо энкодера: вспышка при смене режима ручки.
      * В остальное время кольцо рисует текущий эффект — оно отдельная секция
      * в OpenRGB и управляется как обычные LED. */
-    if (!knob_light_enabled) {
-        for (uint8_t i = KNOB_RING_FIRST; i <= KNOB_RING_LAST; i++) {
-            if (i >= led_min && i < led_max) rgb_matrix_set_color(i, 0, 0, 0);
+    const bool show_knob_mode = knob_preview_only ||
+                                (knob_light_enabled && knob_ind_tmr && timer_elapsed32(knob_ind_tmr) < KNOB_PREVIEW_MS);
+    if (knob_preview_only) {
+        /* Only the encoder ring is visible during a preview with RGB off. */
+        for (uint8_t i = led_min; i < led_max && i < RGB_MATRIX_LED_COUNT; i++) {
+            rgb_matrix_set_color(i, 0, 0, 0);
         }
-    } else if (knob_ind_tmr && timer_elapsed32(knob_ind_tmr) < 700) {
+    }
+    if (show_knob_mode) {
         static const uint8_t hue[KNOB_MODE_COUNT] = {0, 85, 170};
-        HSV                  hsv                  = {hue[knob_mode], 255, 255};
-        RGB                  rgb                  = hsv_to_rgb(hsv);
+        HSV hsv = {hue[knob_mode], 255, 255};
+        RGB rgb = hsv_to_rgb(hsv);
         for (uint8_t i = KNOB_RING_FIRST; i <= KNOB_RING_LAST; i++) {
             if (i >= led_min && i < led_max) rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
         }
+    } else if (!knob_light_enabled) {
+        for (uint8_t i = KNOB_RING_FIRST; i <= KNOB_RING_LAST; i++) {
+            if (i >= led_min && i < led_max) rgb_matrix_set_color(i, 0, 0, 0);
+        }
     }
+    if (knob_preview_only) return false;
 
     /* 3. Уровень заряда на цифровом ряду по Fn+B */
     if (mkey_battery_has_measurement() && bat_disp_tmr && timer_elapsed32(bat_disp_tmr) < 4000) {
