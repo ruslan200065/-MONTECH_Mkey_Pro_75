@@ -29,6 +29,7 @@ enum {
 enum {
     CMD_CUSTOM_SET_VALUE = 0x07,
     CMD_CUSTOM_GET_VALUE = 0x08,
+    CMD_CUSTOM_SAVE      = 0x09,
     CMD_VIAL             = 0xFE,
 };
 
@@ -341,6 +342,28 @@ bool mkey_vial_raw_hid(uint8_t *data, uint8_t length) {
     uint8_t  cmd  = data[0];
     uint8_t  sub  = data[1];
     uint8_t *args = &data[2];
+
+    if (sub == CH_PERKEY_COLOR || sub == CH_PERKEY_BRI) {
+        if (cmd == CMD_CUSTOM_SAVE) {
+            /* Direct colors are a live preview and only live in RAM. */
+            raw_hid_send(data, length);
+            return true;
+        }
+        if (length < 5) return false;
+        if (cmd == CMD_CUSTOM_GET_VALUE) {
+            uint8_t id = args[0] == CH_ALL ? 0 : args[0];
+            HSV color = {0, 0, 0};
+            if (id < RGB_MATRIX_LED_COUNT) color = direct_colors[id];
+            if (sub == CH_PERKEY_COLOR) {
+                args[1] = color.h;
+                args[2] = color.s;
+            } else {
+                args[1] = (color.v + 8) / 17;
+            }
+            raw_hid_send(data, length);
+            return true;
+        }
+    }
 
     /* Раскраска по клавишам из VIA — пишем в тот же буфер, что и Direct. */
     if (cmd == CMD_CUSTOM_SET_VALUE && (sub == CH_PERKEY_COLOR || sub == CH_PERKEY_BRI)) {
